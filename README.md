@@ -1,4 +1,4 @@
-# EmployeeDB-SQLProject
+# Employee Analytics And Payroll System
 
 📌 Project Overview
 
