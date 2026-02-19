@@ -1,0 +1,33 @@
+
+CREATE DATABASE IF NOT EXISTS EmployeeDB;
+USE EmployeeDB;
+
+DROP TABLE IF EXISTS Employees;
+DROP TABLE IF EXISTS Departments;
+DROP TABLE IF EXISTS Roles;
+
+CREATE TABLE Departments (
+    DepartmentID INT AUTO_INCREMENT PRIMARY KEY,
+    DepartmentName VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Roles (
+    RoleID INT AUTO_INCREMENT PRIMARY KEY,
+    RoleName VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Employees (
+    EmployeeID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(100) NOT NULL,
+    LastName VARCHAR(100) NOT NULL,
+    DOB DATE NOT NULL,
+    Email VARCHAR(150) UNIQUE NOT NULL,
+    DepartmentID INT,
+    RoleID INT,
+    Salary DECIMAL(10,2) CHECK (Salary>0),
+    HireDate DATE DEFAULT (CURRENT_DATE),
+    PerformanceRating INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID),
+    FOREIGN KEY (RoleID) REFERENCES Roles(RoleID)
+);
+
